@@ -24,17 +24,7 @@ namespace BankingTests
         }
 
         // Replicate the bad behavior (this should pass when you start, demonstrating where the problem is)
-        [Fact]
-        public void OverdraftAllowed()
-        {
-            var account = new BankAccount();
-            var openingBalance = account.GetBalance();
-            var amountToWithrdaw = openingBalance + 1;
 
-            account.Withdraw(amountToWithrdaw);
-
-            Assert.Equal(-1, account.GetBalance());
-        }
 
         [Fact]
         public void OverdraftNotAllowed()
