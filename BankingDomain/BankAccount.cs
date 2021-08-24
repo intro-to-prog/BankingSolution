@@ -12,7 +12,14 @@ namespace BankingDomain
 
         public void Withdraw(decimal amountToWithdraw)
         {
-            _balance -= amountToWithdraw;
+            if (amountToWithdraw > _balance)
+            {
+                return;
+            }
+            else
+            {
+                _balance -= amountToWithdraw;
+            }
         }
 
         public void Deposit(decimal amountToDeposit)
