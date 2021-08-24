@@ -14,5 +14,10 @@ namespace BankingDomain
         {
             _balance -= amountToWithdraw;
         }
+
+        public void Deposit(decimal amountToDeposit)
+        {
+            _balance += amountToDeposit;
+        }
     }
 }
