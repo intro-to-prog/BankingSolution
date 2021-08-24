@@ -33,9 +33,27 @@ namespace BankingTests
             var openingBalance = account.GetBalance();
             var amountToWithrdaw = openingBalance + 1;
 
-            account.Withdraw(amountToWithrdaw);
+            try
+            {
+                account.Withdraw(amountToWithrdaw);
+            }
+            catch (OverdraftException)
+            {
+
+                // cool. No problem. Was Expecting that.
+            }
 
             Assert.Equal(openingBalance, account.GetBalance());
+        }
+
+        [Fact]
+        public void OverdraftThrowsException()
+        {
+            var account = new BankAccount();
+
+            Assert.Throws<OverdraftException>(() =>
+                account.Withdraw(account.GetBalance() + 0.1M)
+            );
         }
 
         [Fact]
