@@ -2,7 +2,7 @@
 
 namespace BankingDomain
 {
-    public class BankAccount
+    public class BankAccount 
     {
         private decimal _balance = 5000;
         public decimal GetBalance()
@@ -22,7 +22,7 @@ namespace BankingDomain
             }
         }
 
-        public void Deposit(decimal amountToDeposit)
+        public virtual void Deposit(decimal amountToDeposit)
         {
             _balance += amountToDeposit;
         }
