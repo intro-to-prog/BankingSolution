@@ -59,11 +59,14 @@ namespace BankingTests
         [Fact]
         public void CanTakeAllTheMoney()
         {
+            // Given - Arrange - Establish Context
             var account = new BankAccount();
             var openingBalance = account.GetBalance();
 
+            // When - Act 
             account.Withdraw(openingBalance);
 
+            // Then - Assert 
             Assert.Equal(0, account.GetBalance());
         }
     }
