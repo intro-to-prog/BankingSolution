@@ -2,6 +2,7 @@
 
 namespace BankingDomain
 {
+    public enum AccountType {  Standard, Gold}
     public class BankAccount
     {
         private decimal _balance = 5000;
@@ -9,6 +10,8 @@ namespace BankingDomain
         {
             return _balance;
         }
+
+        public AccountType Type = AccountType.Standard;
 
         public void Withdraw(decimal amountToWithdraw)
         {
@@ -24,7 +27,9 @@ namespace BankingDomain
 
         public void Deposit(decimal amountToDeposit)
         {
-            _balance += amountToDeposit;
+            decimal bonus = Type == AccountType.Gold ? amountToDeposit * .1M : 0;
+            
+            _balance += amountToDeposit + bonus;
         }
     }
 }
