@@ -1,5 +1,6 @@
 ﻿using BankingDomain;
 using BankingTests.TestDoubles;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace BankingTests
         [Fact]
         public void NewAccountsHaveProperBalance()
         {
-            var account = new BankAccount(new DummyBonusCalculator());
+            var account = new BankAccount(new Mock<ICanCalulateBonuses>().Object);
 
             decimal openingBalance = account.GetBalance();
 
