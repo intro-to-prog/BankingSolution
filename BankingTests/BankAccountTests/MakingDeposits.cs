@@ -1,4 +1,5 @@
 ﻿using BankingDomain;
+using BankingTests.TestDoubles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace BankingTests.BankAccountTests
         [Fact]
         public void DepositsIncreaseBalance()
         {
-            var account = new BankAccount();
+            var account = new BankAccount(new DummyBonusCalculator());
             var openingBalance = account.GetBalance();
             var amountToDeposit = 10M;
 
