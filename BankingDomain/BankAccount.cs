@@ -28,6 +28,7 @@ namespace BankingDomain
             else
             {
                 // WTCYWYH
+                // "Command" (Action)
                 _narc.TellTheMan(this, amountToWithdraw);
                 _balance -= amountToWithdraw;
             }
@@ -36,6 +37,7 @@ namespace BankingDomain
         public void Deposit(decimal amountToDeposit)
         {
             // WTCYWYH
+            // "Query" (Func)
             decimal bonus = _bonusCalculator.GetDepositBonusFor(_balance, amountToDeposit);
             _balance += amountToDeposit + bonus;
         }
