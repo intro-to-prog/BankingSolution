@@ -6,10 +6,12 @@ namespace BankingDomain
     {
         private decimal _balance = 5000;
         private readonly ICanCalulateBonuses _bonusCalculator;
+        private readonly INarcOnWithdrawals _narc;
 
-        public BankAccount(ICanCalulateBonuses bonusCalculator)
+        public BankAccount(ICanCalulateBonuses bonusCalculator, INarcOnWithdrawals narc)
         {
             _bonusCalculator = bonusCalculator;
+            _narc = narc;
         }
 
         public decimal GetBalance()
@@ -25,6 +27,8 @@ namespace BankingDomain
             }
             else
             {
+                // WTCYWYH
+                _narc.TellTheMan(this, amountToWithdraw);
                 _balance -= amountToWithdraw;
             }
         }

@@ -17,7 +17,10 @@ namespace BankingTests.BankAccountTests
         {
             // Given
             var stubbedBonusCalculator = new Mock<ICanCalulateBonuses>();
-            var account = new BankAccount(stubbedBonusCalculator.Object);
+            var account = new BankAccount(
+                stubbedBonusCalculator.Object,
+                new Mock<INarcOnWithdrawals>().Object);
+
             var openingBalance = account.GetBalance();
             var amountToDeposit = 53.25M;
 

@@ -1,5 +1,6 @@
 ﻿using BankingDomain;
 using BankingTests.TestDoubles;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace BankingTests
         private readonly decimal _openingBalance;
         public MakingWithdrawals()
         {
-            _account = new BankAccount(new DummyBonusCalculator());
+            _account = new BankAccount(new DummyBonusCalculator(), new Mock<INarcOnWithdrawals>().Object);
             _openingBalance = _account.GetBalance();
         }
 
