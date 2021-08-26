@@ -40,6 +40,12 @@ namespace BankKiosk
                 txtAmount.SelectAll();
                 txtAmount.Focus();
             }
+            catch(TransactionOutOfRangeException)
+            {
+                MessageBox.Show("Enter a number above zero, idiot.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAmount.SelectAll();
+                txtAmount.Focus();
+            }
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
