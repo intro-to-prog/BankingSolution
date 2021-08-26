@@ -21,10 +21,7 @@ namespace BankingDomain
 
         public void Withdraw(decimal amountToWithdraw)
         {
-            if(amountToWithdraw <= 0)
-            {
-                throw new TransactionOutOfRangeException();
-            }
+            GuardAmountIsPositive(amountToWithdraw);
             if (amountToWithdraw > _balance)
             {
                 throw new OverdraftException();
@@ -38,8 +35,17 @@ namespace BankingDomain
             }
         }
 
+        private void GuardAmountIsPositive(decimal amount)
+        {
+            if (amount <= 0)
+            {
+                throw new TransactionOutOfRangeException();
+            }
+        }
+
         public void Deposit(decimal amountToDeposit)
         {
+            GuardAmountIsPositive(amountToDeposit);
             // WTCYWYH
             // "Query" (Func)
             decimal bonus = _bonusCalculator.GetDepositBonusFor(_balance, amountToDeposit);
