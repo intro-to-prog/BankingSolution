@@ -17,7 +17,7 @@ namespace BankingTests
         public void NewAccountsHaveProperBalance()
         {
             var account = new BankAccount(
-                new Mock<ICanCalulateBonuses>().Object,
+                new Mock<ICanCalculateBonuses>().Object,
                 new Mock<INarcOnWithdrawals>().Object
               );
 

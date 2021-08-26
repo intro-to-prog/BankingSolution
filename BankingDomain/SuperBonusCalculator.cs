@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankingDomain
 {
-    public class SuperBonusCalculator : ICanCalulateBonuses
+    public class SuperBonusCalculator : ICanCalculateBonuses
     {
         public decimal GetDepositBonusFor(decimal balance, decimal amountToDeposit)
         {

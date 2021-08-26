@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankingTests.TestDoubles
 {
-    public class DummyBonusCalculator : ICanCalulateBonuses
+    public class DummyBonusCalculator : ICanCalculateBonuses
     {
         public decimal GetDepositBonusFor(decimal balance, decimal amountToDeposit)
         {

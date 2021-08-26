@@ -2,7 +2,7 @@
 
 namespace BankingDomain
 {
-    public class TimeRestrictedBonusCalculator : ICanCalulateBonuses
+    public class TimeRestrictedBonusCalculator : ICanCalculateBonuses
     {
         private readonly ISystemTime _systemTime;
 

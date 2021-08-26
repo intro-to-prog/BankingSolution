@@ -18,7 +18,7 @@ namespace BankingTests.SuperBonusCalculatorTests
             stubbedClock.Setup(c => c.GetCurrent()).Returns(
                     new DateTime(1969,4,20,16,59,59)
                 );
-            ICanCalulateBonuses bonusCalculator = new TimeRestrictedBonusCalculator(stubbedClock.Object);
+            ICanCalculateBonuses bonusCalculator = new TimeRestrictedBonusCalculator(stubbedClock.Object);
 
             var bonus = bonusCalculator.GetDepositBonusFor(99, 100);
 
@@ -33,7 +33,7 @@ namespace BankingTests.SuperBonusCalculatorTests
             stubbedClock.Setup(c => c.GetCurrent()).Returns(
                     new DateTime(1969, 4, 20, 17, 00, 01)
                 );
-            ICanCalulateBonuses bonusCalculator = new TimeRestrictedBonusCalculator(stubbedClock.Object);
+            ICanCalculateBonuses bonusCalculator = new TimeRestrictedBonusCalculator(stubbedClock.Object);
 
             var bonus = bonusCalculator.GetDepositBonusFor(99, 100);
 

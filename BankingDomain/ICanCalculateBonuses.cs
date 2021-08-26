@@ -1,6 +1,6 @@
 ﻿namespace BankingDomain
 {
-    public interface ICanCalulateBonuses
+    public interface ICanCalculateBonuses
     {
         decimal GetDepositBonusFor(decimal balance, decimal amountToDeposit);
     }

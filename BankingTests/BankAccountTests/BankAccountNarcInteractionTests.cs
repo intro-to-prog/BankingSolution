@@ -17,7 +17,7 @@ namespace BankingTests.BankAccountTests
             // Given
             var mockedNarc = new Mock<INarcOnWithdrawals>();
             var account = new BankAccount(
-                new Mock<ICanCalulateBonuses>().Object,
+                new Mock<ICanCalculateBonuses>().Object,
                 mockedNarc.Object
                 );
 

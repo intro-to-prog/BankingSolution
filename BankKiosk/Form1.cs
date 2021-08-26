@@ -27,9 +27,19 @@ namespace BankKiosk
 
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
-            decimal amount = decimal.Parse(txtAmount.Text);
-            _account.Withdraw(amount);
-            Text = _account.GetBalance().ToString("c");
+            try
+            {
+                decimal amount = decimal.Parse(txtAmount.Text);
+                _account.Withdraw(amount);
+                Text = _account.GetBalance().ToString("c");
+            }
+            catch (FormatException)
+            {
+
+                MessageBox.Show("Enter a number, moron!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtAmount.SelectAll();
+                txtAmount.Focus();
+            }
         }
 
         private void btnDeposit_Click(object sender, EventArgs e)
@@ -44,7 +54,7 @@ namespace BankKiosk
     {
         public void TellTheMan(BankAccount bankAccount, decimal amountToWithdraw)
         {
-            MessageBox.Show($"You are withdrawing ${amountToWithdraw:c}.", "Narcing on you!");
+            MessageBox.Show($"You are withdrawing {amountToWithdraw:c}.", "Narcing on you!");
         }
     }
 }

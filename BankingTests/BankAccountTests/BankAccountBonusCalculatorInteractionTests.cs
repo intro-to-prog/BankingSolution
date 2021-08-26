@@ -16,7 +16,7 @@ namespace BankingTests.BankAccountTests
         public void BonusCalculatorIsUsedProperly()
         {
             // Given
-            var stubbedBonusCalculator = new Mock<ICanCalulateBonuses>();
+            var stubbedBonusCalculator = new Mock<ICanCalculateBonuses>();
             var account = new BankAccount(
                 stubbedBonusCalculator.Object,
                 new Mock<INarcOnWithdrawals>().Object);
@@ -36,7 +36,7 @@ namespace BankingTests.BankAccountTests
         }
     }
 
-    public class StubbedBonusCalculator : ICanCalulateBonuses
+    public class StubbedBonusCalculator : ICanCalculateBonuses
     {
         public decimal GetDepositBonusFor(decimal balance, decimal amountToDeposit)
         {
