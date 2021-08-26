@@ -27,10 +27,18 @@ namespace BankKiosk
 
         private void btnWithdraw_Click(object sender, EventArgs e)
         {
+            DoTransaction(_account.Withdraw);
+        }
+        private void btnDeposit_Click(object sender, EventArgs e)
+        {
+            DoTransaction(_account.Deposit);
+        }
+        private void DoTransaction(Action<decimal> op)
+        {
             try
             {
                 decimal amount = decimal.Parse(txtAmount.Text);
-                _account.Withdraw(amount);
+                op(amount);
                 Text = _account.GetBalance().ToString("c");
             }
             catch (FormatException)
@@ -40,7 +48,7 @@ namespace BankKiosk
                 txtAmount.SelectAll();
                 txtAmount.Focus();
             }
-            catch(TransactionOutOfRangeException)
+            catch (TransactionOutOfRangeException)
             {
                 MessageBox.Show("Enter a number above zero, idiot.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtAmount.SelectAll();
@@ -48,12 +56,7 @@ namespace BankKiosk
             }
         }
 
-        private void btnDeposit_Click(object sender, EventArgs e)
-        {
-            decimal amount = decimal.Parse(txtAmount.Text);
-            _account.Deposit(amount);
-            Text = _account.GetBalance().ToString("c");
-        }
+        
     }
 
     public class WindowsNarc : INarcOnWithdrawals
